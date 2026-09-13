@@ -444,7 +444,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%);
       pointer-events: none;
       -webkit-user-drag: none
     }
@@ -511,7 +510,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%)
     }
 
     .lightbox {
@@ -1159,7 +1157,7 @@ body.big .save-the-date textPath {
     function toggleBigFont() { const on = document.body.classList.toggle('big'); const btn = document.getElementById('fontToggleBtn'); btn.innerHTML = on ? '<b>가</b><span>작게 보기</span>' : '<b>가</b><span>큰글씨 보기</span>' }
     function updateDday() { let diff = target - new Date(); const el = document.getElementById('dday'); if (diff <= 0) { el.textContent = '오늘 결혼합니다.'; return } const d = Math.floor(diff / 86400000); diff -= d * 86400000; const h = Math.floor(diff / 3600000); diff -= h * 3600000; const m = Math.floor(diff / 60000); const pad = n => String(n).padStart(2, '0'); el.textContent = `${pad(d)} 일 ${pad(h)} 시간 ${pad(m)} 분` } updateDday(); setInterval(updateDday, 1000);
     document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => { const id = btn.dataset.page; document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); if (id === 'gallery' && window.coverflow) window.coverflow.refresh() }));
-    const galleryPhotos = ['images/photo01.jpg', 'images/photo02.jpg', 'images/photo03.jpg', 'images/photo04.jpg', 'images/photo05.jpg', 'images/photo06.jpg', 'images/photo07.jpg', 'images/photo08.jpg', 'images/photo09.jpg', 'images/photo10.jpg', 'images/photo11.jpg', 'images/photo12.jpg', 'images/photo13.jpg', 'images/photo14.jpg', 'images/photo15.jpg'];
+    const galleryPhotos = ['images/photo01.jpeg', 'images/photo02.jpeg', 'images/photo03.jpeg', 'images/photo04.jpeg', 'images/photo05.jpeg', 'images/photo06.jpeg', 'images/photo07.jpeg', 'images/photo08.jpeg', 'images/photo09.jpeg', 'images/photo10.jpeg', 'images/photo11.jpeg', 'images/photo12.jpeg', 'images/photo13.jpeg', 'images/photo14.jpeg', 'images/photo15.jpeg'];
     const gallery = document.getElementById('galleryGrid'); galleryPhotos.forEach((src, idx) => { const item = document.createElement('button'); item.className = 'g-item'; item.dataset.label = '사진 ' + (idx + 1); const img = document.createElement('img'); img.src = src; img.alt = '사진 ' + (idx + 1); item.appendChild(img); item.onclick = () => openLightbox(idx); gallery.appendChild(item) });
     const coverflowTrack = document.getElementById('coverflowTrack'); galleryPhotos.forEach((src, idx) => { const card = document.createElement('div'); card.className = 'cf-card'; card.dataset.label = '사진 ' + (idx + 1); const img = document.createElement('img'); img.src = src; img.alt = '사진 ' + (idx + 1); img.draggable = false; card.appendChild(img); coverflowTrack.appendChild(card) });
     window.coverflow = (function () {
