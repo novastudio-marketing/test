@@ -230,7 +230,22 @@
       padding: 12px 28px calc(var(--nav-h) + 80px);
       text-align: center;
     }
+    
+    @media (max-height: 760px) {
+  .home-inner {
+    transform: scale(0.92);
+    transform-origin: top center;
+    width: calc(100% / 0.92);
+  }
+}
 
+@media (max-height: 700px) {
+  .home-inner {
+    transform: scale(0.86);
+    transform-origin: top center;
+    width: calc(100% / 0.86);
+  }
+}
     .save-the-date {
       margin-bottom: 14px
     }
