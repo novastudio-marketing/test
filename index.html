@@ -546,39 +546,40 @@
 
 
     /* GUIDE DASHBOARD */
-    .guide-grid {
-      display: grid;
-      gap: 0px;
-      margin-top: 10px;
-    }
+.guide-grid {
+  display: grid;
+  gap: 0;
+  margin-top: 10px;
+}
 
-    .guide-card {
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      padding: 0px;
-      cursor: pointer;
-    }
+.guide-card {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  cursor: default;
+}
 
-    .guide-card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0px;
-      height: 64px;
-      min-height: 64px;
-      padding: 0;
-     }
+.guide-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  height: 64px;
+  min-height: 64px;
+  padding: 0;
+  border: none;
+}
 
-    .guide-eyebrow {
-      display: block;
-      font-family: 'Space Grotesk', var(--sans);
-      font-size: calc(11px * var(--fs));
-      font-weight: 600;
-      letter-spacing: .16em;
-      color: var(--accent);
-      margin-bottom: 6px
-    }
+.guide-eyebrow {
+  display: block;
+  font-family: var(--sans);
+  font-size: calc(11px * var(--fs));
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
 
 .guide-card-text h3 {
   font-family: var(--sans);
@@ -586,47 +587,34 @@
   font-weight: 700;
   letter-spacing: 0;
   color: var(--ink);
-  margin-bottom: 3px;
+  margin: 0;
 }
 
-    .guide-card-text p {
-      font-size: calc(14px * var(--fs));
-      color: var(--muted)
-    }
+.guide-card-text p {
+  font-size: calc(14px * var(--fs));
+  color: var(--muted);
+}
 
-    .guide-chevron {
-      flex: none;
-      width: 20px;
-      height: 20px;
-      stroke: var(--ink);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transition: transform .25s ease
-    }
+/* 안내 내용 항상 펼침 */
+.guide-card-detail {
+  max-height: none;
+  overflow: visible;
+  margin: 0;
+  padding: 0 0 20px 0;
+  border: none;
+}
 
-    .guide-card.open .guide-chevron,
-    .guide-chevron.open {
-      transform: rotate(90deg)
-    }
+.guide-detail-text {
+  font-size: calc(14px * var(--fs));
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
 
-    .guide-card-detail {
-      max-height: none;
-      overflow: visible;
-    }
-
-    .guide-card.open .guide-card-detail {
-      max-height: 400px;
-      margin-top: 16px;
-      padding-top: 16px;
-    }
-
-    .guide-detail-text {
-      font-size: calc(14px * var(--fs));
-      line-height: 1.7;
-      color: var(--muted)
-    }
+/* 안내 페이지 화살표 제거 */
+.guide-card .guide-chevron {
+  display: none;
+}
 
     /* GIFT (마음) */
 
