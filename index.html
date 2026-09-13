@@ -878,35 +878,88 @@
   }
 
   .home-inner {
-    padding: 10px 24px calc(var(--nav-h) + 20px);
+    padding: 10px 24px calc(var(--nav-h) + 18px);
   }
 
+  /* SAVE THE DATE */
   .save-the-date {
-    margin-bottom: 8px;
-
+    margin-bottom: 7px;
   }
 
+  .save-the-date text,
+  .save-the-date textPath {
+    font-size: 12px;
+    letter-spacing: 1.7px;
+  }
+
+  /* 메인 사진 */
   .video-frame {
     width: min(74vw, 330px);
-  }
-
-  .home-names {
-    font-size: 30px;
-    margin-top: 10px;
     margin-bottom: 10px;
   }
 
+  /* Jaemin and Dayeon */
+  .home-names {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 9px;
+
+  }
+
+  /* 부모님 / 장남 장녀 */
   .home-secondary {
-    margin-top: 8px;
-    padding-top: 8px;
+    margin-top: 7px;
+    padding-top: 7px;
+    max-width: 245px;
+    gap: 1px;
   }
 
+  .home-secondary p {
+    font-size: calc(10.5px * var(--fs));
+    line-height: 1.45;
+
+  }
+
+  /* UNTIL WE SAY I DO */
   .home-countdown {
-    margin-top: 10px !important;
+    margin-top: 9px !important;
+    gap: 1px;
+
   }
 
+  .home-countdown-label {
+    font-size: calc(10.5px * var(--fs));
+    letter-spacing: .18em;
+
+  }
+
+  /* 82일 15시간 45분 */
+  .home-countdown-value {
+    font-size: calc(14px * var(--fs));
+    letter-spacing: .08em;
+  }
+
+  /* 큰글씨 보기 버튼도 같이 축소 */
+  .fontsize-toggle {
+    width: 56px;
+    height: 56px;
+    right: 12px;
+    bottom: calc(var(--nav-h) + 35px);
+    font-size: 8.5px;
+  }
+
+  .fontsize-toggle b {
+    font-size: 14px;
+  }
+
+  /* 하단 메뉴 */
   .bottom-nav {
     height: var(--nav-h);
+  }
+
+  .nav-btn {
+    font-size: calc(10px * var(--fs));
+    gap: 3px;
   }
 
   .nav-btn svg {
