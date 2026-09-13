@@ -1201,7 +1201,7 @@ wrap.addEventListener('touchend', (e) => {
     const diff = endX - swipeStartX;
 
     // 스와이프 거리가 너무 짧으면 무시
-    if (Math.abs(diff) < 5) {
+    if (Math.abs(diff) < 1) {
         snapToActive();
         return;
     }
