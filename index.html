@@ -226,126 +226,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      min-height: auto;
-      padding: 12px 28px calc(var(--nav-h) + 80px);
-      text-align: center;
+      min-height: 100%;
+      padding: clamp(12px, 2vh, 22px) 28px calc(var(--nav-h) + 30px);
+  box-sizing: border-box;
+  text-align: center;
     }
     
-    @media (max-height: 760px) {
-  .home-inner {
-    transform: scale(0.92);
-    transform-origin: top center;
-    width: calc(100% / 0.92);
-  }
-}
-
-@media (max-height: 700px) {
-  .home-inner {
-    transform: scale(0.86);
-    transform-origin: top center;
-    width: calc(100% / 0.86);
-  }
-}
-    .save-the-date {
-      margin-bottom: 14px
-    }
-
-    .save-the-date svg {
-      overflow: visible
-    }
-
-    .save-the-date text,
-    .save-the-date textPath {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      fill: var(--h-muted)
-    }
-
-    .video-frame {
-      width: calc(100% - 40px);
-      max-width: 380px;
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border-radius: 0px;
-      background: #fdfdfd;
-      margin-bottom: 16px;
-      flex-shrink: 0;
-    }
-
-    .video-frame .bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block
-    }
-
-    .home-names {
-      font-family: 'Alex Brush', cursive;
-      font-size: 34px;
-      line-height: 1;
-      color: var(--h-ink);
-      margin-top:20px;
-      margin-bottom: 15px;
-    }
-
-    .home-ceremony {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .home-ceremony p {
-      font-family: 'Space Grotesk', var(--sans);
-      font-size: calc(12px * var(--fs));
-      letter-spacing: .0em;
-      color: var(--h-muted);
-    }
-
-    .home-secondary {
-      margin-top: 16px;
-      padding-top: 16px;
-      width: 100%;
-      max-width: 280px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .home-secondary p {
-      font-size: calc(12px * var(--fs));
-      line-height: 1.5;
-      color: var(--h-muted);
-    }
-
-    .home-secondary b {
-      color: var(--h-ink);
-      font-weight: 700;
-    }
-
-    .home-countdown {
-      margin-top: 20px !important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px
-    }
-
-    .home-countdown-label {
-      font-family: 'Space Grotesk', var(--sans);
-      font-size: calc(12px * var(--fs));
-      letter-spacing: .20em;
-      color: var(--h-muted)
-    }
-
-    .home-countdown-value {
-      font-family: 'Space Grotesk', var(--sans);
-      font-size: calc(16px * var(--fs));
-      font-weight: 600;
-      letter-spacing: .1em;
-      color: var(--h-ink)
-    }
 
     /* NAV */
     .bottom-nav {
@@ -907,27 +793,103 @@
       }
 
       .save-the-date {
-        margin-bottom: 24px
-      }
-
+        margin-bottom: clamp(8px, 1.5vh, 14px);
+}
+.save-the-date svg {
+  overflow: visible;
+}
+.save-the-date text,
+.save-the-date textPath {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(11px, 1.6vh, 14px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  fill: var(--h-muted);
+}
       .video-frame {
-        width: 80%;
-        margin-bottom: 16px
-      }
+        width: min(calc(100% - 40px), 380px);
 
-      .home-names {
-        margin-bottom: 14px
-      }
+  /* 핵심: 화면 높이에 따라 사진도 줄어듦 */
+  height: clamp(280px, 45vh, 380px);
+  overflow: hidden;
+  border-radius: 0;
+  background: #fdfdfd;
+  margin-bottom: clamp(8px, 1.5vh, 16px);
+  flex-shrink: 0;
+}
 
-      .home-secondary {
-        margin-top: 12px;
-        padding-top: 10px
-      }
+.video-frame .bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-      .home-countdown {
-        margin-top: 8px
-      }
+.home-names {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(28px, 4.5vh, 34px);
+  line-height: 1;
+  color: var(--h-ink);
+  margin-top: clamp(8px, 2vh, 20px);
+  margin-bottom: clamp(8px, 1.5vh, 15px);
+}
 
+.home-ceremony {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.home-ceremony p {
+  font-family: 'Space Grotesk', var(--sans);
+  font-size: calc(12px * var(--fs));
+  letter-spacing: 0;
+  color: var(--h-muted);
+}
+
+.home-secondary {
+  margin-top: clamp(6px, 1.8vh, 16px);
+  padding-top: clamp(6px, 1.8vh, 16px);
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.home-secondary p {
+  font-size: calc(12px * var(--fs));
+  line-height: 1.5;
+  color: var(--h-muted);
+}
+
+.home-secondary b {
+  color: var(--h-ink);
+  font-weight: 700;
+}
+
+.home-countdown {
+  margin-top: clamp(8px, 2vh, 20px) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.home-countdown-label {
+  font-family: 'Space Grotesk', var(--sans);
+  font-size: clamp(10px, 1.5vh, 12px);
+  letter-spacing: .20em;
+  color: var(--h-muted);
+}
+
+.home-countdown-value {
+  font-family: 'Space Grotesk', var(--sans);
+  font-size: clamp(14px, 2.2vh, 16px);
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--h-ink);
+}
       .bottom-nav {
         height: var(--nav-h)
       }
