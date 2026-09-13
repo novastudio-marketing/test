@@ -521,6 +521,8 @@
       align-items: center;
       justify-content: center;
       padding: 20px
+      touch-action: none;
+      overscroll-behavior: none;
     }
 
     .lightbox.show {
@@ -532,6 +534,11 @@
       max-height: 82dvh;
       object-fit: contain;
       border-radius: 14px
+      
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
     }
 
     .lightbox .close {
@@ -1340,6 +1347,21 @@ window.addEventListener('mouseup', (e) => {
         grid.style.display = 'grid'; cf.style.display = 'none'; counter.style.display = 'none'; btn.textContent = '← BACK';
       }
     }
+    const lightbox = document.getElementById('lightbox');
+        lightbox.addEventListener('touchmove', function(e) {
+     if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
+lightbox.addEventListener('gesturestart', function(e) {
+  e.preventDefault();
+});
+lightbox.addEventListener('gesturechange', function(e) {
+  e.preventDefault();
+});
+lightbox.addEventListener('gestureend', function(e) {
+  e.preventDefault();
+});
     function openLightbox(idx) { const lb = document.getElementById('lightbox'), img = document.getElementById('lightboxImg'); img.src = galleryPhotos[idx]; img.alt = '사진 ' + (idx + 1); lb.classList.add('show') } function closeLightbox() { document.getElementById('lightbox').classList.remove('show') }
     function toggleGift(who) {
       const panel = document.getElementById(who === 'groom' ? 'giftGroom' : 'giftBride');
