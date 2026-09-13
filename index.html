@@ -784,6 +784,7 @@ body.big .save-the-date textPath {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding:
     clamp(14px, 2.2dvh, 24px)
     clamp(20px, 6vw, 28px)
@@ -933,8 +934,8 @@ body.big .save-the-date textPath {
 /* 아주 작은 화면 높이에서 추가 보정 */
 @media (max-height: 700px) {
   .home-inner {
-    padding-top: 8px;
-    padding-bottom: 14px;
+    padding: 8px 20px 14px;
+    justify-content: center;
   }
 
   .video-frame {
