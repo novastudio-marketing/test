@@ -68,6 +68,8 @@
       color: var(--ink);
       font-family: var(--sans);
       overflow: hidden
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     body {
@@ -813,13 +815,7 @@
 /* 메인 영상 */
 
 .video-frame {
-  width:
-    min(
-      80vw,
-      42vh,
-      380px
-    );
-
+  width: min(80vw, 44dvh, 380px);
   aspect-ratio: 1 / 1;
   flex: none;
   overflow: hidden;
