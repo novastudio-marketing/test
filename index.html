@@ -67,7 +67,7 @@
       background: #fdfdfd;
       color: var(--ink);
       font-family: var(--sans);
-      overflow: hidden
+      overflow: hidden;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
@@ -520,7 +520,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px
+      padding: 20px;
       touch-action: none;
       overscroll-behavior: none;
     }
@@ -533,7 +533,7 @@
       max-width: 100%;
       max-height: 82dvh;
       object-fit: contain;
-      border-radius: 14px
+      border-radius: 14px;
       
       touch-action: none;
       user-select: none;
@@ -767,39 +767,59 @@ body.big .save-the-date textPath {
 
 
  #home {
-  --h-bg: #fdfdfd;
-  --h-ink: #242220;
-  --h-muted: #9d9d9d;
-  --h-line: rgba(0, 0, 0, .09);
+  --h-ink: #ffffff;
+  --h-muted: rgba(255,255,255,.78);
   width: 100%;
   height: calc(100dvh - var(--nav-h));
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: var(--h-bg);
-  color: var(--h-ink);
+  min-height: calc(100dvh - var(--nav-h));
   position: relative;
+  overflow: hidden;
   padding: 0;
+  background: #000;
+  color: var(--h-ink);
 }
 
-/* 홈 전체 */
+/* HOME 안의 전체 콘텐츠 */
 .home-inner {
+  position: relative;
   width: 100%;
+  height: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding:
-    clamp(14px, 2.2dvh, 24px)
-    clamp(20px, 6vw, 28px)
-    clamp(24px, 4dvh, 40px);
+    clamp(20px, 4dvh, 40px)
+    clamp(20px, 6vw, 28px);
   box-sizing: border-box;
   text-align: center;
-  position: relative; /* 추가 */
-  z-index: 1;         /* 추가 */
 }
 
+/* 영상 = HOME 전체 배경 */
+.video-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 실제 영상 */
+.video-frame .bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 영상 이외의 HOME 요소를 전부 영상 위로 */
 .home-inner > *:not(.video-frame) {
   position: relative;
   z-index: 2;
