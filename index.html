@@ -1039,11 +1039,121 @@ body.big .save-the-date textPath {
     height: 21px;
   }
 }
-  
+
+/* ========================================
+   HOME - 영상 하단 메뉴까지 완전 풀스크린
+======================================== */
+
+#home {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* HOME 영상 */
+#home .video-frame {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 실제 영상 */
+#home .video-frame .bg-video {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center center !important;
+
+  display: block !important;
+}
+
+/* HOME 내용 */
+#home .home-inner {
+  position: relative !important;
+  z-index: 1 !important;
+
+  width: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+
+  background: transparent !important;
+
+  padding-bottom:
+    calc(var(--nav-h) + max(18px, env(safe-area-inset-bottom))) !important;
+}
+
+/* 하단 메뉴 자체는 항상 투명 */
+.bottom-nav {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+
+  border: 0 !important;
+  border-top: 0 !important;
+
+  box-shadow: none !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  z-index: 50 !important;
+}
+
+/* HOME일 때 아이콘은 영상 위 흰색 */
+body.home-active .bottom-nav {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.home-active .nav-btn {
+  background: transparent !important;
+  color: rgba(255,255,255,.72) !important;
+}
+
+body.home-active .nav-btn.active {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/* HOME이 아닌 페이지는 기존 색 */
+body:not(.home-active) .nav-btn {
+  color: #838383;
+}
+
+body:not(.home-active) .nav-btn.active {
+  color: #221f1c;
+}
+
+    
   </style>
 </head>
 
-<body>
+<body class="home-active">
   <div class="app">
     <section class="page active" id="home">
       <div class="home-inner">
@@ -1220,7 +1330,7 @@ body.big .save-the-date textPath {
     })();
     function toggleBigFont() { const on = document.body.classList.toggle('big'); const btn = document.getElementById('fontToggleBtn'); btn.innerHTML = on ? '<b>가</b><span>작게 보기</span>' : '<b>가</b><span>큰글씨 보기</span>' }
     function updateDday() { let diff = target - new Date(); const el = document.getElementById('dday'); if (diff <= 0) { el.textContent = '오늘 결혼합니다.'; return } const d = Math.floor(diff / 86400000); diff -= d * 86400000; const h = Math.floor(diff / 3600000); diff -= h * 3600000; const m = Math.floor(diff / 60000); const pad = n => String(n).padStart(2, '0'); el.textContent = `${pad(d)} 일 ${pad(h)} 시간 ${pad(m)} 분` } updateDday(); setInterval(updateDday, 1000);
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => { const id = btn.dataset.page; document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); if (id === 'gallery' && window.coverflow) window.coverflow.refresh() }));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => { const id = btn.dataset.page; document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); document.body.classList.toggle('home-active', id === 'home'); if (id === 'gallery' && window.coverflow) window.coverflow.refresh() }));
     const galleryPhotos = ['images/photo01.jpeg', 'images/photo02.jpeg', 'images/photo03.jpeg', 'images/photo04.jpeg', 'images/photo05.jpeg', 'images/photo06.jpeg', 'images/photo07.jpeg', 'images/photo08.jpeg', 'images/photo09.jpeg', 'images/photo10.jpeg', 'images/photo11.jpeg', 'images/photo12.jpeg', 'images/photo13.jpeg', 'images/photo14.jpeg', 'images/photo15.jpeg'];
     const gallery = document.getElementById('galleryGrid'); galleryPhotos.forEach((src, idx) => { const item = document.createElement('button'); item.className = 'g-item'; item.dataset.label = '사진 ' + (idx + 1); const img = document.createElement('img'); img.src = src; img.alt = '사진 ' + (idx + 1); item.appendChild(img); item.onclick = () => openLightbox(idx); gallery.appendChild(item) });
     const coverflowTrack = document.getElementById('coverflowTrack'); galleryPhotos.forEach((src, idx) => { const card = document.createElement('div'); card.className = 'cf-card'; card.dataset.label = '사진 ' + (idx + 1); const img = document.createElement('img'); img.src = src; img.alt = '사진 ' + (idx + 1); img.draggable = false; card.appendChild(img); coverflowTrack.appendChild(card) });
