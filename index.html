@@ -862,7 +862,7 @@ body.big .save-the-date textPath {
 /* SAVE THE DATE */
 .save-the-date {
   position:absolute !important;
-  top:70px;
+  top:max(55px, calc(env(safe-area-inset-top) + 25px));
   left:50%;
   transform:translateX(-50%);
   margin:0;
