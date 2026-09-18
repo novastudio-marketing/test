@@ -1530,7 +1530,61 @@ lightbox.addEventListener('gesturechange', function(e) {
 lightbox.addEventListener('gestureend', function(e) {
   e.preventDefault();
 });
-    function openLightbox(idx) { const lb = document.getElementById('lightbox'), img = document.getElementById('lightboxImg'); img.src = galleryPhotos[idx]; img.alt = '사진 ' + (idx + 1); lb.classList.add('show') } function closeLightbox() { document.getElementById('lightbox').classList.remove('show') }
+    // ===== 확대 사진 + 좌우 스와이프 =====
+let lightboxIndex = 0;
+let lightboxStartX = 0;
+
+function openLightbox(idx) {
+  lightboxIndex = idx;
+
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+
+  img.src = galleryPhotos[lightboxIndex];
+  img.alt = '사진 ' + (lightboxIndex + 1);
+
+  lb.classList.add('show');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+
+function showLightboxImage(index) {
+  // 마지막 사진 다음은 첫 사진,
+  // 첫 사진 이전은 마지막 사진
+  lightboxIndex =
+    (index + galleryPhotos.length) % galleryPhotos.length;
+
+  const img = document.getElementById('lightboxImg');
+
+  img.src = galleryPhotos[lightboxIndex];
+  img.alt = '사진 ' + (lightboxIndex + 1);
+}
+
+const lightboxEl = document.getElementById('lightbox');
+
+lightboxEl.addEventListener('touchstart', function (e) {
+  lightboxStartX = e.changedTouches[0].clientX;
+}, { passive: true });
+
+lightboxEl.addEventListener('touchend', function (e) {
+  const lightboxEndX = e.changedTouches[0].clientX;
+  const distance = lightboxEndX - lightboxStartX;
+
+  // 짧은 터치는 넘김으로 처리하지 않음
+  if (Math.abs(distance) < 50) return;
+
+  // 왼쪽으로 밀기 → 다음 사진
+  if (distance < 0) {
+    showLightboxImage(lightboxIndex + 1);
+  }
+
+  // 오른쪽으로 밀기 → 이전 사진
+  else {
+    showLightboxImage(lightboxIndex - 1);
+  }
+}, { passive: true });
     function toggleGift(who) {
       const panel = document.getElementById(who === 'groom' ? 'giftGroom' : 'giftBride');
       const chevron = document.getElementById(who === 'groom' ? 'groomChevron' : 'brideChevron');
