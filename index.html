@@ -1050,16 +1050,15 @@ body.big .save-the-date textPath {
 #home {
   position: absolute !important;
   inset: 0 !important;
-
+  z-index: 1 !important;
   width: 100% !important;
   height: 100dvh !important;
   min-height: 100dvh !important;
-
   padding: 0 !important;
   margin: 0 !important;
-
   overflow: hidden !important;
   background: #000 !important;
+  pointer-events: none !important;
 }
 
 /* HOME 영상 */
@@ -1104,6 +1103,8 @@ body.big .save-the-date textPath {
 
   padding-bottom:
     calc(var(--nav-h) + max(18px, env(safe-area-inset-bottom))) !important;
+
+  pointer-events: none !important;
 }
 
 /* 하단 메뉴 자체는 항상 투명 */
