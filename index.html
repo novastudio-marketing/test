@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>재민과 다연 모바일 청첩장</title>
+  <title>재민과 다연 모바일 청첩장</title>f
 
   <!-- 카카오톡 등 메신저 공유 시 뜨는 미리보기 카드 설정 (Open Graph) -->
   <meta property="og:type" content="website">
@@ -861,9 +861,12 @@ body.big .save-the-date textPath {
       
 /* SAVE THE DATE */
 .save-the-date {
-  flex: none;
-  margin-bottom:
-    clamp(8px, 1.5dvh, 16px);
+  position:absolute !important;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
+  z-index:3;
 }
 
 .save-the-date svg {
