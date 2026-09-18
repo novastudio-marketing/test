@@ -907,14 +907,20 @@ body.big .save-the-date textPath {
       /* Jaemin and Dayeon */
 
 .home-names {
-  flex: none;
+  position: absolute !important;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 100%;
   font-family: 'Alex Brush', cursive;
-  font-size:
-    clamp(
-      27px,
-      min(8vw, 4.6dvh),
-      34px
-    );
+  font-size: clamp(27px, min(8vw, 4.6dvh), 34px);
+  line-height: 1;
+  color: var(--h-ink);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
 
   line-height: 1;
   color: var(--h-ink);
